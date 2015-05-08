@@ -121,7 +121,7 @@ For each testcase output the value of the S-expression or one of the three error
 1. 可以分成两类，一类是原子性的term，比如"true", "false", "10"等，可以直接解析结果（作为递归的Base情况）；另一类是非原子性的term，依赖于subterm，
 比如"(if true 1 2)"， 整个term必须先解析完subterm，即"true", "1", "2"，而解析subterm可以递归处理；</br>
 2. 区分原子性的term和非原子性的term：如果有括号包起来，按照语义显然是非原子性的term，否则是原子性的term；</br>
-3. 按照evaluate的次序，如果存在错误，需要按照筛选出先发生的错误。特别注意if语句的短路evaluate，要根据bool值过滤掉不执行的语句。
+3. 按照evaluate的次序，如果存在错误，需要筛选出先发生的错误，过滤掉后发生的错误。特别注意if语句的短路evaluate，要根据bool值过滤掉不执行的语句。
 
 代码如下：
 ***
